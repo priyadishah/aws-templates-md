@@ -8,20 +8,29 @@ param (
 If ( $ImageType -eq "Debug") {
     $FilePath = "C:\DevOps\Lansa-AWS\lansa-master-win.cfn.template"
 } else {
+    #$FilePath = "$($env:System_DefaultWorkingDirectory)\_lansa_aws-templates\CloudFormationWindows\lansa-master-win.cfn.template"
     $FilePath = "$($env:System_DefaultWorkingDirectory)\_LansaAWSTemplates\CloudFormationWindows\lansa-master-win.cfn.template"
 }
 
 $TemplateJson = Get-Content -Path $FilePath | ConvertFrom-Json
 
 $BaseImageNameArray = @(
-    'w16d-14-2'
-    'w16d-15-0'
-    'w19d-14-2'
-    'w19d-15-0'
-    'w16d-14-2j'
-    'w16d-15-0j'
-    'w19d-14-2j'
-    'w19d-15-0j'
+    # 'w16d-14-2'
+    # 'w16d-15-0'
+    # 'w19d-14-2'
+    # 'w19d-15-0'
+    # 'w16d-14-2j'
+    # 'w16d-15-0j'
+    # 'w19d-14-2j'
+    # 'w19d-15-0j'
+    'w16d142'
+    'w16d150'
+    'w19d142'
+    'w19d150'
+    'w16d142j'
+    'w16d150j'
+    'w19d142j'
+    'w19d150j'
 )
 
 if ( $TemplateJson ) {
@@ -43,6 +52,7 @@ if ( $TemplateJson ) {
     foreach ( $ImageName in $BaseImageNameArray ) {
 
         #Developement and Production uses same file path location
+        #$path = "$($env:System_DefaultWorkingDirectory)/_Build Image Release Artefacts/aws/$ImageName.txt"
         $path = "$($env:System_DefaultWorkingDirectory)/_Build Image Release Artefacts/aws/$ImageName.txt"
 
         switch ($ImageType)
@@ -75,7 +85,7 @@ if ( $TemplateJson ) {
     $AMIList | Out-Default | Write-Host
 
     $index = 0
-    foreach ($win in @(, "win2016", "win2019", "win2016jpn", "win2019jpn")) {
+    foreach ($win in @(, "win2016", "win2019", "win2016jpn", "win2019jpn", "win2022", "win2022jpn")) {
 
         # Update the AMIs in template for Region/Win version
         if  ( $AMIList[$index] -ne "skip" ) {
@@ -116,6 +126,7 @@ if ( $TemplateJson ) {
 }
 
 #goto current source folder
+# $path = "$($env:System_DefaultWorkingDirectory)/_lansa_aws-templates"
 $path = "$($env:System_DefaultWorkingDirectory)/_LansaAWSTemplates"
 cd $path
 
