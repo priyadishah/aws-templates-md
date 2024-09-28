@@ -8,8 +8,8 @@ param (
 If ( $ImageType -eq "Debug") {
     $FilePath = "C:\DevOps\Lansa-AWS\lansa-master-win.cfn.template"
 } else {
-    #$FilePath = "$($env:System_DefaultWorkingDirectory)\_lansa_aws-templates\CloudFormationWindows\lansa-master-win.cfn.template"
-    $FilePath = "$($env:System_DefaultWorkingDirectory)\_LansaAWSTemplates\CloudFormationWindows\lansa-master-win.cfn.template"
+    $FilePath = "$($env:System_DefaultWorkingDirectory)\_lansa_aws-templates\CloudFormationWindows\lansa-master-win.cfn.template"
+    #$FilePath = "$($env:System_DefaultWorkingDirectory)\_LansaAWSTemplates\CloudFormationWindows\lansa-master-win.cfn.template"
 }
 
 $TemplateJson = Get-Content -Path $FilePath | ConvertFrom-Json
