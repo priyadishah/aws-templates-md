@@ -7,7 +7,7 @@ param (
     [string]
     $GitRepoName
   )
-Write-host "All branches after checkout: $(git branch)"
+
 # change to project directory
 cd "$($env:Pipeline_Workspace)/$($GitRepoName)"
 
