@@ -48,8 +48,8 @@ if ( $TemplateJson ) {
     foreach ( $ImageName in $BaseImageNameArray ) {
 
         #Developement and Production uses same file path location
-        #$path = "$($env:System_DefaultWorkingDirectory)/_Build Image Release Artefacts/aws/$ImageName.txt"
-        $path = "$($env:Pipeline_Workspace)/s/_Build Image Release Artefacts/aws/$ImageName.txt"
+        $path = "$($env:System_DefaultWorkingDirectory)/_Build Image Release Artefacts/aws/$ImageName.txt"
+        #$path = "$($env:Pipeline_Workspace)/s/_Build Image Release Artefacts/aws/$ImageName.txt"
         switch ($ImageType)
         {
             Development
@@ -123,8 +123,8 @@ if ( $TemplateJson ) {
 }
 
 #goto current source folder
-#$path = "$($env:System_DefaultWorkingDirectory)/_lansa_aws-templates"
-$path = "$($env:Pipeline_Workspace)/s/_Build Image Release Artefacts"
+$path = "$($env:System_DefaultWorkingDirectory)/_lansa_aws-templates"
+
 cd $path
 
 # git add files
