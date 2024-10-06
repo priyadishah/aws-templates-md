@@ -22,10 +22,10 @@ $BaseImageNameArray = @(
     'w16d-15-0j'
     'w19d-14-2j'
     'w19d-15-0j'
-    'w22d-14-2'
-    'w22d-15-0'
-    'w22d-14-2j'
-    'w22d-15-0j'
+    #'w22d-14-2'
+    #'w22d-15-0'
+    #'w22d-14-2j'
+    #'w22d-15-0j'
 
 )
 
@@ -50,6 +50,7 @@ if ( $TemplateJson ) {
         #Developement and Production uses same file path location
         #$path = "$($env:System_DefaultWorkingDirectory)/_Build Image Release Artefacts/aws/$ImageName.txt"
         $path = "$($env:Pipeline_Workspace)/_Build Image Release Artefacts/aws/$ImageName.txt"
+
         switch ($ImageType)
         {
             Development
@@ -82,7 +83,7 @@ if ( $TemplateJson ) {
     $AMIList | Out-Default | Write-Host
 
     $index = 0
-    foreach ($win in @(, "win2016", "win2019", "win2016jpn", "win2019jpn", "win2022", "win2022jpn")) {
+    foreach ($win in @(, "win2016", "win2019", "win2016jpn", "win2019jpn")) {
 
         # Update the AMIs in template for Region/Win version
         if  ( $AMIList[$index] -ne "skip" ) {
