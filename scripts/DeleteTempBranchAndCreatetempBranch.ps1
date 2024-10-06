@@ -9,7 +9,7 @@ param (
   )
 Write-host "All branches after checkout: $(git branch)"
 # change to project directory
-cd "$($env:System_DefaultWorkingDirectory)/$($GitRepoName)"
+cd "$($env:Pipeline_Workspace)/$($GitRepoName)"
 
 # sync with git server
 git fetch
